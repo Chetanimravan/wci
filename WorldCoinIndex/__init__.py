@@ -21,5 +21,5 @@ class Coin(object):
         self.raw_data = json.loads(requests.get(self._fetch_url).content)
         self.data = self.data_read(self.raw_data)
 
-    def get_cny_value_of(self, crypto: str, fiat: str):
+    def get_value_of(self, crypto: str, fiat: str):
         return self.data[crypto.upper()]['Price_{}'.format(fiat.lower())]
