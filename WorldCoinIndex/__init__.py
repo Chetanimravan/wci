@@ -1,6 +1,7 @@
 # coding=utf-8
 import requests
 import json
+from retry import retry
 
 
 class Coin(object):
@@ -17,6 +18,7 @@ class Coin(object):
             data_dict[crypto['Label'].split('/')[0]] = crypto
         return data_dict
 
+    @retry(tries=3)
     def update_data(self):
         self.raw_data = json.loads(requests.get(self._fetch_url).content)
         self.data = self.data_read(self.raw_data)

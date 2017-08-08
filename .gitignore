@@ -1,2 +1,4 @@
-
+build/
+dist/
+WorldCoinIndex.egg-info/
 *.egg
